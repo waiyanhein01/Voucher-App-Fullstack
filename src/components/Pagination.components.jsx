@@ -19,6 +19,9 @@ const PaginationComponents = ({links:{next,prev},meta:{from,to,total},fetchUrlHa
         <button onClick={handleNextHandler} disabled={!next} className="flex items-center justify-center disabled:pointer-events-none disabled:opacity-50 px-4 py-2 text-sm font-medium text-gray-900 bg-gray-50 border-0 border-s border-gray-200 rounded-e-lg hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
           Next
         </button>
+        <button onClick={handleNextHandler} disabled={!next} className="flex items-center justify-center disabled:pointer-events-none disabled:opacity-50 px-4 py-2 text-sm font-medium text-gray-900 bg-gray-50 border-0 border-s border-gray-200 rounded-e-lg hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+          Test
+        </button>
       </div>
     </div>
   );
