@@ -11,7 +11,7 @@ const DashboardPage = () => {
           <ModuleBtnComponent
             name="Product"
             icon={<HiCircleStack className=" size-16" />}
-            url="/product"
+            url="/products"
           />
         </div>
 
@@ -27,7 +27,7 @@ const DashboardPage = () => {
           <ModuleBtnComponent
             name="Voucher"
             icon={<HiDocumentText className=" size-16" />}
-            url="/voucher"
+            url="/vouchers"
           />
         </div>
 

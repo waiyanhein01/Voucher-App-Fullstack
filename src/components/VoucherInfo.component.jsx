@@ -70,7 +70,7 @@ const VoucherInfoComponent = () => {
     }
 
     if (data.voucher_details) {
-      nav("/voucher/details/" + response.id);
+      nav("/vouchers/details/" + response.id);
     }
   };
 

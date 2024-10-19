@@ -8,7 +8,7 @@ const VoucherDetailsPage = () => {
     <ContainerComponent>
       <BreadcrumbComponent
         currentPage={"Voucher Details"}
-        links={[{ title: "Voucher Module", path: "/voucher" }]}
+        links={[{ title: "Voucher Module", path: "/vouchers" }]}
       />
       <VoucherDetailsCardComponent />
     </ContainerComponent>

@@ -43,7 +43,7 @@ const VoucherListRowComponent = ({
 
   // const { id } = useParams();
   const voucherDetailsBtnHandler = () => {
-    nav(`/voucher/details/${id}`);
+    nav(`/vouchers/details/${id}`);
   };
 
   return (

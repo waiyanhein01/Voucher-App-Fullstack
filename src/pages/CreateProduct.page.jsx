@@ -8,7 +8,7 @@ const CreateProductPage = () => {
     <ContainerComponent>
       <BreadcrumbComponent
         currentPage={"Create Product"}
-        links={[{ title: "Product Module", path: "/product" }]}
+        links={[{ title: "Product Module", path: "/products" }]}
       />
       <CreateProductCardComponent/>
     </ContainerComponent>

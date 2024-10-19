@@ -9,7 +9,7 @@ const BreadcrumbComponent = ({ currentPage, links }) => {
         <ol className="inline-flex items-center rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <Link
-              to={"/"}
+              to={"/dashboard"}
               className="inline-flex items-center text-sm font-medium text-stone-500 dark:text-stone-400 dark:hover:text-white"
             >
               {<HiMiniHome className="mx-1 size-4" />}
