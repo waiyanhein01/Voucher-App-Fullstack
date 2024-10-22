@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const HeaderComponent = () => {
   const nav = useNavigate();
   const backToHomeHeader = () => {
-    nav("/");
+    nav("/dashboard");
   }
   return (
     <ContainerComponent className={"mb-5"}>

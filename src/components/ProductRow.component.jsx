@@ -6,6 +6,7 @@ import { lineSpinner } from "ldrs";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import ShowDateComponent from "./ShowDate.component";
+import useCookie from "react-use-cookie";
 
 lineSpinner.register();
 
@@ -13,6 +14,7 @@ const ProductRowComponent = ({
   product: { id, product_name, price, created_at },
 }) => {
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [userToken, setUserToken] = useCookie("my_token");
 
   const { mutate } = useSWRConfig();
 
@@ -20,6 +22,9 @@ const ProductRowComponent = ({
     setDeleteLoading(true);
     const res = await fetch(`${api}/products/${id}`, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+      }
     });
     setDeleteLoading(false);
     mutate(api + "/products");

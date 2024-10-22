@@ -5,8 +5,8 @@ import api from "../api/Api";
 import { tailspin } from "ldrs";
 import useSWR, { useSWRConfig } from "swr";
 import toast from "react-hot-toast";
+import useCookie from "react-use-cookie";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 tailspin.register();
 
 const EditProductCardComponent = () => {
@@ -15,6 +15,14 @@ const EditProductCardComponent = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const [userToken, setUserToken] = useCookie("my_token");
+  const fetcher = (url) =>
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    }).then((res) => res.json());
 
   const { id } = useParams();
 
@@ -37,13 +45,14 @@ const EditProductCardComponent = () => {
       }),
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
     });
     mutate(api + `/products/${id}`);
     setIsUpdating(false);
     toast.success("Edit product successfully");
     if (data.after_save) {
-      nav("/product");
+      nav("/dashboard/products");
     }
   };
   return (
@@ -56,14 +65,12 @@ const EditProductCardComponent = () => {
       {isLoading ? (
         <div className="mt-5">
           <div>
-            <div className="skeleton-loader h-4 w-40 rounded mb-2">
-            </div>
+            <div className="skeleton-loader h-4 w-40 rounded mb-2"></div>
             <div className="skeleton-loader h-10 rounded-lg mb-2"></div>
           </div>
 
           <div className="mt-3">
-            <div className="skeleton-loader h-4 w-40 rounded mb-2">
-            </div>
+            <div className="skeleton-loader h-4 w-40 rounded mb-2"></div>
             <div className="skeleton-loader h-10 rounded-lg mb-2"></div>
           </div>
 
@@ -180,7 +187,7 @@ const EditProductCardComponent = () => {
 
           <div className=" mt-3">
             <Link
-              to={"/products"}
+              to={"/dashboard/products"}
               className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-cyan-500 focus:z-10 focus:ring-1 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             >
               Cancel

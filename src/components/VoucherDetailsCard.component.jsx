@@ -7,9 +7,15 @@ import printJS from "print-js";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const 
+VoucherDetailsCardComponent = () => {
+  const [userToken, setUserToken] = useCookie("my_token");
+  const fetcher = (...args) => fetch(...args,{
+    headers: {
+      "Authorization": `Bearer ${userToken}`
+    }
+  }).then((res) => res.json());
 
-const VoucherDetailsCardComponent = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useSWR(api + "/vouchers/" + id, fetcher);
   const handlePrint = () => {

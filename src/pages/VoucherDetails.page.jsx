@@ -1,18 +1,18 @@
-import React from 'react'
-import ContainerComponent from '../components/Container.component'
-import BreadcrumbComponent from '../components/Breadcrumb.component'
-import VoucherDetailsCardComponent from '../components/VoucherDetailsCard.component'
+import React from "react";
+import ContainerComponent from "../components/Container.component";
+import BreadcrumbComponent from "../components/Breadcrumb.component";
+import VoucherDetailsCardComponent from "../components/VoucherDetailsCard.component";
 
 const VoucherDetailsPage = () => {
   return (
     <ContainerComponent>
       <BreadcrumbComponent
         currentPage={"Voucher Details"}
-        links={[{ title: "Voucher Module", path: "/vouchers" }]}
+        links={[{ title: "Voucher Module", path: "/dashboard/vouchers" }]}
       />
       <VoucherDetailsCardComponent />
     </ContainerComponent>
-  )
-}
+  );
+};
 
-export default VoucherDetailsPage
+export default VoucherDetailsPage;

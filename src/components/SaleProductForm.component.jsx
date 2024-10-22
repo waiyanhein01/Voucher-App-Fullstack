@@ -3,10 +3,17 @@ import useSWR from "swr";
 import api from "../api/Api";
 import { useForm } from "react-hook-form";
 import useRecordStore from "../store/useRecordStore";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import useCookie from "react-use-cookie";
 
 const SaleProductFormComponent = () => {
+  const [userToken, setUserToken] = useCookie("my_token");
+
+  const fetcher = (url) => fetch(url,{
+    headers: {
+      "Authorization": `Bearer ${userToken}`
+    }
+  }).then((res) => res.json());
+
   const { data, isLoading, error } = useSWR(api + "/products", fetcher);
 
   const {

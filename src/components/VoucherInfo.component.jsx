@@ -7,6 +7,7 @@ import useRecordStore from "../store/useRecordStore";
 import api from "../api/Api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useCookie from "react-use-cookie";
 
 const VoucherInfoComponent = () => {
   const {
@@ -17,6 +18,8 @@ const VoucherInfoComponent = () => {
   } = useForm();
 
   tailspin.register();
+
+  const [userToken, setUserToken] = useCookie("my_token");
 
   const [isSending, setIsSending] = useState(false);
 
@@ -46,13 +49,13 @@ const VoucherInfoComponent = () => {
 
     const net_total = total + tax;
     const currentData = { ...data, records, total, tax, net_total };
-    console.log(currentData);
 
     const res = await fetch(api + "/vouchers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${userToken}`
       },
       body: JSON.stringify(currentData),
     });
@@ -70,11 +73,9 @@ const VoucherInfoComponent = () => {
     }
 
     if (data.voucher_details) {
-      nav("/vouchers/details/" + response.id);
+      nav("/dashboard/vouchers/details" + response.id);
     }
   };
-
-  const date = new Date();
 
   return (
     <div className="">

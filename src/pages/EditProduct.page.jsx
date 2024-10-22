@@ -10,7 +10,7 @@ const EditProductPage = () => {
         currentPage={"Edit Product"}
         links={[{ title: "Product Module", path: "/products" }]}
       />
-      <EditProductCardComponent/>
+      <EditProductCardComponent />
     </ContainerComponent>
   );
 };

@@ -8,15 +8,17 @@ import SearchCreateBtnComponent from "./SearchCreateBtn.component";
 import { HiMiniComputerDesktop, HiXMark } from "react-icons/hi2";
 import { debounce } from "lodash";
 import PaginationComponents from "./Pagination.components";
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
+import useCookie from "react-use-cookie";
 
 const VoucherListsComponent = () => {
+  const [userToken,setUserToken] = useCookie("my_token");
+  const fetcher = (url) => fetch(url,{
+    headers: {
+      "Authorization": `Bearer ${userToken}`
+    }
+  }).then((r) => r.json());
   const [fetchUrl, setFetchUrl] = useState(api + "/vouchers");
-  const { data, isLoading, error } = useSWR(
-    fetchUrl,
-    fetcher
-  );
+  const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
 
   const searchHandler = debounce((e) => {
     setFetchUrl(api + "/vouchers?q=" + e.target.value);
@@ -24,12 +26,12 @@ const VoucherListsComponent = () => {
 
   const fetchUrlHandler = (url) => {
     setFetchUrl(url);
-  }
+  };
   return (
     <div className="">
       <SearchCreateBtnComponent
         onChange={searchHandler}
-        url={"/sale"}
+        url={"/dashboard/sale"}
         btnName={"Create New Voucher"}
         placeholder={"Search voucher(eg-ZS9D17M268)"}
         icon={<HiMiniComputerDesktop className=" size-5" />}
@@ -94,7 +96,11 @@ const VoucherListsComponent = () => {
         </table>
       </div>
       {!isLoading && (
-        <PaginationComponents links={data.links} meta={data.meta} fetchUrlHandler={fetchUrlHandler} />
+        <PaginationComponents
+          links={data.links}
+          meta={data.meta}
+          fetchUrlHandler={fetchUrlHandler}
+        />
       )}
     </div>
   );

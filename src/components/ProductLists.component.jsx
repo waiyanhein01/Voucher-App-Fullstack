@@ -8,10 +8,16 @@ import SearchCreateBtnComponent from "./SearchCreateBtn.component";
 import { HiMiniPlus } from "react-icons/hi2";
 import { debounce } from "lodash";
 import PaginationComponents from "./Pagination.components";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import useCookie from "react-use-cookie";
 
 const ProductListsComponent = () => {
+  const [userToken, setUserToken] = useCookie("my_token");
+  const fetcher = (url) => fetch(url,{
+    headers: {
+      "Authorization": `Bearer ${userToken}`
+    }
+  }).then((res) => res.json());
+
   const [fetchUrl, setFetchUrl] = useState(api + "/products");
   const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
   const searchHandler = debounce((e) => {
@@ -21,7 +27,7 @@ const ProductListsComponent = () => {
   const fetchUrlHandler = (url) => {
     setFetchUrl(url);
   };
-  
+
   return (
     <div className="">
       <SearchCreateBtnComponent
@@ -33,7 +39,7 @@ const ProductListsComponent = () => {
       />
 
       <h1 className=" text-xl mb-2 font-semibold">
-        Product List Table 
+        Product List Table
         {/* (
         <span className=" text-cyan-700">
           {isLoading ? (
@@ -81,8 +87,14 @@ const ProductListsComponent = () => {
           </tbody>
         </table>
       </div>
-      
-      {!isLoading && <PaginationComponents links={data.links} meta={data.meta} fetchUrlHandler={fetchUrlHandler} />}
+
+      {!isLoading && (
+        <PaginationComponents
+          links={data.links}
+          meta={data.meta}
+          fetchUrlHandler={fetchUrlHandler}
+        />
+      )}
     </div>
   );
 };

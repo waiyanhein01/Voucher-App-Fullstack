@@ -5,6 +5,7 @@ import api from "../api/Api";
 import { tailspin } from "ldrs";
 import { useSWRConfig } from "swr";
 import toast from "react-hot-toast";
+import useCookie from "react-use-cookie";
 
 tailspin.register();
 
@@ -15,6 +16,8 @@ const CreateProductCardComponent = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const [isToken,setIsToken] = useCookie("my_token")
 
   const { mutate } = useSWRConfig();
 
@@ -34,6 +37,7 @@ const CreateProductCardComponent = () => {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "Authorization": `Bearer ${isToken}`
       },
     });
     mutate(api + "/products");
@@ -45,7 +49,7 @@ const CreateProductCardComponent = () => {
       toast.error(resJson.message);
     }
     if (data.after_save) {
-      nav("/products");
+      nav("/dashboard/products");
     }
     reset();
   };
@@ -151,7 +155,7 @@ const CreateProductCardComponent = () => {
 
         <div className=" mt-3">
           <Link
-            to={"products"}
+            to={"/dashboard/products"}
             className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-cyan-800 focus:z-10 focus:ring-1 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           >
             Cancel

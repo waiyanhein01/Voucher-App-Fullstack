@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { lineSpinner } from "ldrs";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
+import useCookie from "react-use-cookie";
 
 lineSpinner.register();
 const VoucherListRowComponent = ({
@@ -22,11 +23,15 @@ const VoucherListRowComponent = ({
 }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const { mutate } = useSWRConfig();
+  const [userToken, setUserToken] = useCookie("my_token");
 
   const deleteVoucherRowHandler = async () => {
     setIsDeleting(true);
     const res = await fetch(api + "/vouchers/" + id, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${userToken}`,
+      }
     });
     console.log(res);
     mutate(api + "/vouchers");
