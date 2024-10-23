@@ -4,10 +4,10 @@ import {
   HiCircleStack,
   HiDocumentText,
   HiMiniComputerDesktop,
-  HiMiniUser,
   HiShieldCheck,
 } from "react-icons/hi2";
 import ContainerComponent from "../components/Container.component";
+import LogoutBtnComponent from "../components/LogoutBtn.component";
 
 const DashboardPage = () => {
   return (
@@ -45,6 +45,7 @@ const DashboardPage = () => {
           />
         </div>
       </div>
+      <LogoutBtnComponent />
     </ContainerComponent>
   );
 };

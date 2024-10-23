@@ -36,7 +36,7 @@ const EditProductCardComponent = () => {
 
   const editFormHandle = async (data) => {
     setIsUpdating(true);
-    await fetch(api + `/products/${id}`, {
+    const res = await fetch(api + `/products/${id}`, {
       method: "PUT",
       body: JSON.stringify({
         product_name: data.product_name,
@@ -46,13 +46,17 @@ const EditProductCardComponent = () => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: `Bearer ${userToken}`,
       },
     });
+    const json = await res.json();
     mutate(api + `/products/${id}`);
     setIsUpdating(false);
-    toast.success("Edit product successfully");
-    if (data.after_save) {
+    if (res.status === 200) {
       nav("/dashboard/products");
+      toast.success(json.message);
+    } else {
+      toast.error(json.message);
     }
   };
   return (
