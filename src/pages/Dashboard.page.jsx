@@ -45,7 +45,6 @@ const DashboardPage = () => {
           />
         </div>
       </div>
-      <LogoutBtnComponent />
     </ContainerComponent>
   );
 };

@@ -11,6 +11,8 @@ import {
   VoucherDetailsPage,
   LoginPage,
   RegisterPage,
+  ChangePasswordPage,
+  ChangeUserNamePage,
 } from "./pages/page";
 import LayoutComponent from "./components/Layout.component";
 
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <DashBoardPage />,
+          },
+          {
+            path: "change-password",
+            element: <ChangePasswordPage />,
+          },
+          {
+            path: "change-username",
+            element: <ChangeUserNamePage />,
           },
           {
             path: "products",

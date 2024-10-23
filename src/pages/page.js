@@ -8,6 +8,8 @@ export {default as AboutPage} from "./About.page"
 export {default as CreateProductPage} from "./CreateProduct.page"
 export {default as EditProductPage} from "./EditProduct.page"
 export {default as VoucherDetailsPage} from "./VoucherDetails.page"
+export {default as ChangePasswordPage} from "./ChangePassword.page"
+export {default as ChangeUserNamePage} from "./ChangeUserName.page"
 
 export {default as LoginPage} from "./Login.page"
 export {default as RegisterPage} from "./Register.page"
