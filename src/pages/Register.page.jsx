@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import api from "../api/Api";
 
 const RegisterPage = () => {
   const nav = useNavigate();
+  const [isSingUp, setIsSingUp] = useState(false);
 
   const {
     register,
@@ -14,6 +15,7 @@ const RegisterPage = () => {
   } = useForm();
 
   const handleRegister = async (data) => {
+    setIsSingUp(true);
     const res = await fetch(api + "/register", {
       method: "POST",
       headers: {
@@ -27,6 +29,7 @@ const RegisterPage = () => {
 
     if (res.status === 200) {
       toast.success("Register successfully");
+      setIsSingUp(false);
       nav("/");
     } else {
       toast.error(json.message);
@@ -150,7 +153,7 @@ const RegisterPage = () => {
                 type="submit"
                 className="w-full text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Create an account
+                {isSingUp ? "Loading..." : "Create an account"}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?

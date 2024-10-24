@@ -11,7 +11,7 @@ const HeaderComponent = () => {
 
   return (
     <ContainerComponent className={"mb-5"}>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center border-b-2 border-gray-100">
         <div className="">
           <h1
             onClick={backToHomeHeader}

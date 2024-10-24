@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { HiCamera, HiOutlineAdjustmentsVertical, HiOutlineKey } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import useCookie from "react-use-cookie";
 import LogoutBtnComponent from "./LogoutBtn.component";
 import useProfileStore from "../store/useProfileStore";
+import ChangeImageComponent from "./ChangeImage.component";
 
 const ProfileComponent = () => {
   // const [profileToken, setProfileToken] = useCookie("my_profile");
-
   // const { name, profile_image,email } = JSON.parse(profileToken);
-  const {user:{name,profile_image,email}} = useProfileStore()
+  const {user:{profile_image}} = useProfileStore()
 
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
@@ -54,33 +53,7 @@ const ProfileComponent = () => {
           isSideNavOpen ? "translate-x-0" : " translate-x-full"
         }`}
       >
-        <div className="flex flex-col items-center gap-4 border-b border-slate-200 p-6">
-          <div className="shrink-0">
-            <div className=" relative border flex h-20 w-20 items-center justify-center rounded-full">
-              <img
-                className="object-cover object-top max-w-full rounded-full"
-                width="100"
-                height="100"
-                src={
-                  profile_image
-                    ? profile_image
-                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdO2DCDcfM7yDAtEo797CkSw_njibgz-lOgw&s"
-                }
-              />
-              <div className="absolute -bottom-1 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-gray-300 p-1 text-sm text-white">
-                <HiCamera/>
-              </div>
-            </div>
-          </div>
-          <div className="flex min-h-[2rem] w-full min-w-0 flex-col items-start justify-center text-center">
-            <h4 className="w-full truncate text-lg font-bold text-slate-700">
-              {name}
-            </h4>
-            <p className="w-full truncate text-sm text-slate-500">
-              {email}
-            </p>
-          </div>
-        </div>
+        <ChangeImageComponent/>
         <nav
           aria-label="side navigation"
           className="flex-1 divide-y divide-slate-100 overflow-auto"
