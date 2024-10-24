@@ -10,7 +10,7 @@ import { set } from "lodash";
 
 const LoginPage = () => {
   const [userToken, setUserToken] = useCookie("my_token");
-  const [profileToken,setProfileToken] = useCookie("my_profile")
+  const [profileToken, setProfileToken] = useCookie("my_profile");
   const nav = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const {
@@ -37,11 +37,10 @@ const LoginPage = () => {
     });
 
     const json = await res.json();
-    console.log(json)
     if (res.status === 200) {
       toast.success("Login successfully");
       setUserToken(json.token);
-      setProfileToken(JSON.stringify(json.user))
+      setProfileToken(JSON.stringify(json.user));
       nav("/dashboard");
     } else {
       toast.error(json.message);

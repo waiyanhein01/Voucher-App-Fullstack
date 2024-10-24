@@ -56,7 +56,7 @@ const ChangeImageComponent = () => {
       <div className="shrink-0">
         <div className=" relative border flex h-20 w-20 items-center justify-center rounded-full">
           <img
-            className="object-cover object-top max-w-full rounded-full"
+            className="object-cover object-top max-w-full rounded-full border"
             width="100"
             height="100"
             src={
