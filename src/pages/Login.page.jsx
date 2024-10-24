@@ -5,6 +5,8 @@ import api from "../api/Api";
 import toast, { Toaster } from "react-hot-toast";
 import useCookie from "react-use-cookie";
 import useSWR from "swr";
+import useProfileStore from "../store/useProfileStore";
+import { set } from "lodash";
 
 const LoginPage = () => {
   const [userToken, setUserToken] = useCookie("my_token");
@@ -35,6 +37,7 @@ const LoginPage = () => {
     });
 
     const json = await res.json();
+    console.log(json)
     if (res.status === 200) {
       toast.success("Login successfully");
       setUserToken(json.token);

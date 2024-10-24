@@ -3,11 +3,14 @@ import { HiCamera, HiOutlineAdjustmentsVertical, HiOutlineKey } from "react-icon
 import { Link } from "react-router-dom";
 import useCookie from "react-use-cookie";
 import LogoutBtnComponent from "./LogoutBtn.component";
+import useProfileStore from "../store/useProfileStore";
 
 const ProfileComponent = () => {
-  const [profileToken, setProfileToken] = useCookie("my_profile");
+  // const [profileToken, setProfileToken] = useCookie("my_profile");
 
-  const { name, profile_image,email } = JSON.parse(profileToken);
+  // const { name, profile_image,email } = JSON.parse(profileToken);
+  const {user:{name,profile_image,email}} = useProfileStore()
+
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   const drawerHandler = () => {
@@ -64,9 +67,9 @@ const ProfileComponent = () => {
                     : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdO2DCDcfM7yDAtEo797CkSw_njibgz-lOgw&s"
                 }
               />
-              <Link className="absolute -bottom-1 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-gray-300 p-1 text-sm text-white">
+              <div className="absolute -bottom-1 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-gray-300 p-1 text-sm text-white">
                 <HiCamera/>
-              </Link>
+              </div>
             </div>
           </div>
           <div className="flex min-h-[2rem] w-full min-w-0 flex-col items-start justify-center text-center">

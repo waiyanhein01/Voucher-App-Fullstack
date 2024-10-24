@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HeaderComponent from './Header.component'
 import { Navigate, Outlet } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import useCookie from 'react-use-cookie'
+import useProfileStore from '../store/useProfileStore'
 
 const LayoutComponent = () => {
   const [userToken,setUserToken] = useCookie("my_token")
+  const [profileToken,setProfileToken] = useCookie("my_profile")
+
+  const {setUser} = useProfileStore()
+
+  useEffect(() => {
+    if(profileToken){
+      setUser(JSON.parse(profileToken))
+    }
+  }, [])
+  
   if(!userToken){
     return <Navigate to="/"/> 
   }
