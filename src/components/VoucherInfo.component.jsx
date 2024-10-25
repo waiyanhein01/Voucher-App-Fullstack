@@ -61,6 +61,7 @@ const VoucherInfoComponent = () => {
     });
 
     const resJson = await res.json();
+    clg
 
     if (res.status === 201) {
       setIsSending(false);
@@ -72,9 +73,9 @@ const VoucherInfoComponent = () => {
       setIsSending(false);
     }
 
-    if (data.voucher_details) {
-      nav("/dashboard/vouchers/details" + response.id);
-    }
+    // if (data.voucher_details) {
+    //   nav("/dashboard/vouchers/details" + response.id);
+    // }
   };
 
   return (

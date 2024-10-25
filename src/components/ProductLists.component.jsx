@@ -74,13 +74,13 @@ const ProductListsComponent = () => {
           <tbody>
             {isLoading ? (
               <ProductSkeletonComponent />
-            ) : data.data.length === 0 ? (
+            ) : data?.data?.length === 0 ? (
               <ProductEmptyRowComponent
                 colSpan={5}
                 title={"There is no product."}
               />
             ) : (
-              data.data.map((product) => (
+              data?.data?.map((product) => (
                 <ProductRowComponent key={product.id} product={product} />
               ))
             )}
