@@ -61,20 +61,19 @@ const VoucherInfoComponent = () => {
     });
 
     const resJson = await res.json();
-    console.log(resJson)
 
     if (res.status === 201) {
       setIsSending(false);
       toast.success("Create voucher successfully");
       resetRecord();
       reset();
+
+      if (data.voucher_details) {
+        nav("/dashboard/vouchers/details" + resJson.id);
+      }
     } else {
       toast.error(resJson.message);
       setIsSending(false);
-    }
-
-    if (data.voucher_details) {
-      nav("/dashboard/vouchers/details" + resJson.voucher_id)
     }
   };
 

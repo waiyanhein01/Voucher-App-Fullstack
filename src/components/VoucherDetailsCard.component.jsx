@@ -6,6 +6,7 @@ import VoucherSkeletonLoaderComponent from "./VoucherSkeletonLoader.component";
 import printJS from "print-js";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import useCookie from "react-use-cookie";
 
 const VoucherDetailsCardComponent = () => {
   const [userToken, setUserToken] = useCookie("my_token");
@@ -47,7 +48,7 @@ const VoucherDetailsCardComponent = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <div
         id="printThis"
         ref={contentRef}
@@ -56,7 +57,7 @@ const VoucherDetailsCardComponent = () => {
         {isLoading ? (
           <VoucherSkeletonLoaderComponent />
         ) : (
-          <div className="">
+          <div>
             <div className="flex justify-between items-start mb-8">
               <div>
                 <h1 className="text-4xl font-bold mb-2">INVOICE</h1>

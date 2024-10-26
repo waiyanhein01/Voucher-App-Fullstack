@@ -14,7 +14,7 @@ const SaleProductFormComponent = () => {
     }
   }).then((res) => res.json());
 
-  const { data, isLoading, error } = useSWR(api + "/products", fetcher);
+  const { data, isLoading, error } = useSWR(api + "/products?limit=100", fetcher);
 
   const {
     register,
@@ -110,7 +110,7 @@ const SaleProductFormComponent = () => {
           <div className=" col-span-5 md:col-span-1">
             <button
               type="submit"
-              className="group relative p-0.5 text-center font-medium transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] focus:z-10 focus:outline-none border border-transparent bg-cyan-700 text-white focus:ring-4 focus:ring-cyan-300 enabled:hover:bg-cyan-800 dark:bg-cyan-600 dark:focus:ring-cyan-800 dark:enabled:hover:bg-cyan-700 rounded-lg w-full h-full flex justify-center items-center"
+              className="group text-nowrap relative px-5 py-2 text-center font-medium transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] focus:z-10 focus:outline-none border border-transparent bg-cyan-700 text-white focus:ring-4 focus:ring-cyan-300 enabled:hover:bg-cyan-800 dark:bg-cyan-600 dark:focus:ring-cyan-800 dark:enabled:hover:bg-cyan-700 rounded-lg w-full h-full flex justify-center items-center"
             >
               Add Product
             </button>

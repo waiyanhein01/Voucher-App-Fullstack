@@ -11,7 +11,7 @@ import useCookie from "react-use-cookie";
 lineSpinner.register();
 
 const ProductRowComponent = ({
-  product: { id, product_name, price, created_at },
+  product: { id, product_name, price, created_at, updated_at },
 }) => {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [userToken, setUserToken] = useCookie("my_token");
@@ -50,6 +50,9 @@ const ProductRowComponent = ({
         <td className="px-6 py-4 text-end">{price}</td>
         <td className="text-xs px-6 py-4 text-end text-nowrap">
           <ShowDateComponent timestamp={created_at} />
+        </td>
+        <td className="text-xs px-6 py-4 text-end text-nowrap">
+          <ShowDateComponent timestamp={updated_at} />
         </td>
         <td className="px-6 py-4 text-end">
           <div className="inline-flex rounded-md shadow-sm">

@@ -15,15 +15,14 @@ const SaleProductTableComponent = () => {
 
   // const {product:{price,product_name,id},cost,quantity} = records
   return (
-    <div className="overflow-x-auto shadow rounded-lg">
-      <div data-testid="table-element" className="relative">
-        <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-          <thead className="group/head text-xs uppercase text-gray-700 dark:text-gray-400">
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-500 uppercase dark:text-gray-400">
             <tr>
               <th className="bg-gray-50 px-6 py-3 group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700">#</th>
-              <th className="bg-gray-50 px-6 py-3 text-nowrap group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700">
+              {/* <th className="bg-gray-50 text-right px-6 py-3 text-nowrap group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700">
                 Product id
-              </th>
+              </th> */}
               <th className="bg-gray-50 px-6 py-3 text-nowrap group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700">
                 Product name
               </th>
@@ -115,7 +114,6 @@ const SaleProductTableComponent = () => {
           </tfoot>
         </table>
       </div>
-    </div>
   );
 };
 

@@ -18,6 +18,7 @@ const VoucherListRowComponent = ({
     voucher_id,
     sale_date,
     net_total,
+    created_at,
   },
   index,
 }) => {
@@ -48,7 +49,7 @@ const VoucherListRowComponent = ({
 
   // const { id } = useParams();
   const voucherDetailsBtnHandler = () => {
-    nav(`/vouchers/details/${id}`);
+    nav(`/dashboard/vouchers/details/${id}`);
   };
 
   return (
@@ -64,7 +65,7 @@ const VoucherListRowComponent = ({
         <td className="px-6 py-4">{customer_email}</td>
         <td className="px-6 py-4 text-right text-nowrap">{voucher_id}</td>
         <td className="px-6 py-4 text-right text-nowrap text-xs">
-          <ShowDateComponent timestamp={sale_date} />
+          <ShowDateComponent timestamp={created_at} />
         </td>
         <td className="px-6 py-4 text-right text-nowrap">{net_total} MMK</td>
         <td className="px-6 py-4 text-end">

@@ -8,7 +8,6 @@ const LogoutBtnComponent = () => {
   const nav = useNavigate();
 
   const logoutBtnHandler = () => {
-    
     removeCookie("my_token");
     nav("/");
   };
