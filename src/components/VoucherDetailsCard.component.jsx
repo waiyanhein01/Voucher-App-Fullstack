@@ -7,8 +7,7 @@ import printJS from "print-js";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
-const 
-VoucherDetailsCardComponent = () => {
+const VoucherDetailsCardComponent = () => {
   const [userToken, setUserToken] = useCookie("my_token");
   const fetcher = (...args) => fetch(...args,{
     headers: {
@@ -30,7 +29,6 @@ VoucherDetailsCardComponent = () => {
   };
 
   const contentRef = useRef();
-
   const handleDownloadPdf = () => {
     const input = contentRef.current;
     html2canvas(input, {
