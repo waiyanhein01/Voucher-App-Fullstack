@@ -59,7 +59,7 @@ const VoucherListRowComponent = ({
           scope="row"
           className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {index + 1}
+          {id}
         </th>
         <td className="px-6 py-4">{customer_name}</td>
         <td className="px-6 py-4">{customer_email}</td>
@@ -67,7 +67,7 @@ const VoucherListRowComponent = ({
         <td className="px-6 py-4 text-right text-nowrap text-xs">
           <ShowDateComponent timestamp={created_at} />
         </td>
-        <td className="px-6 py-4 text-right text-nowrap">{net_total} MMK</td>
+        <td className="px-6 py-4 text-right text-nowrap">{net_total}</td>
         <td className="px-6 py-4 text-end">
           <div className="inline-flex rounded-md shadow-sm">
             <button

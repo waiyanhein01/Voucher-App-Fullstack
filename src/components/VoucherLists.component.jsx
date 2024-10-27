@@ -9,31 +9,49 @@ import { HiMiniComputerDesktop, HiXMark } from "react-icons/hi2";
 import { debounce } from "lodash";
 import PaginationComponents from "./Pagination.components";
 import useCookie from "react-use-cookie";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const VoucherListsComponent = () => {
-  const [userToken,setUserToken] = useCookie("my_token");
-  const fetcher = (url) => fetch(url,{
-    headers: {
-      "Authorization": `Bearer ${userToken}`
-    }
-  }).then((r) => r.json());
-  const [fetchUrl, setFetchUrl] = useState(api + "/vouchers");
+  const [userToken, setUserToken] = useCookie("my_token");
+  const location = useLocation(); // 1.for get params endpoints
+  const [param, setParam] = useSearchParams(); //3. for change url params(dynamically)
+
+  const fetcher = (url) =>
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    }).then((r) => r.json());
+  const [fetchUrl, setFetchUrl] = useState(api + "/vouchers" + location.search);
   const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
 
-  const searchHandler = debounce((e) => {
-    setFetchUrl(api + "/vouchers?q=" + e.target.value);
-  }, 500);
-
   const fetchUrlHandler = (url) => {
+    console.log(url);
+    const currentUrl = new URL(url); // 2.for get fetch api url
+    const newSearchParam = new URLSearchParams(currentUrl.search);
+    const paramObject = Object.fromEntries(newSearchParam.entries());
+    setParam(paramObject);
     setFetchUrl(url);
   };
+
+  const searchHandler = debounce((e) => {
+    if (e.target.value) {
+      setParam({ q: e.target.value });
+      setFetchUrl(api + "/vouchers?q=" + e.target.value);
+    } else {
+      setParam({});
+      setFetchUrl(api + "/vouchers");
+    }
+  }, 500);
+
+  // console.log(data)
   return (
     <div className="">
       <SearchCreateBtnComponent
         onChange={searchHandler}
         url={"/dashboard/sale"}
         btnName={"Create New Voucher"}
-        placeholder={"Search voucher(eg-ZS9D17M268)"}
+        placeholder={"Search voucher"}
         icon={<HiMiniComputerDesktop className=" size-5" />}
       />
       <h1 className=" text-xl mb-2 font-semibold">
@@ -62,13 +80,13 @@ const VoucherListsComponent = () => {
                 Customer Email
               </th>
               <th scope="col" className="px-6 py-3 text-right text-nowrap">
-                Voucher ID
+                Slip ID
               </th>
               <th scope="col" className="px-6 py-3 text-right text-nowrap">
                 Sale date
               </th>
               <th scope="col" className="px-6 py-3 text-right">
-                Price
+                Total(MMK)
               </th>
               <th scope="col" className="px-6 py-3 text-right">
                 Action

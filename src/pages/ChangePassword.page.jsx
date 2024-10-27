@@ -5,15 +5,12 @@ import { useForm } from "react-hook-form";
 import api from "../api/Api";
 import useCookie, { removeCookie } from "react-use-cookie";
 import toast, { Toaster } from "react-hot-toast";
-import useProfileStore from "../store/useProfileStore";
 import { useNavigate } from "react-router-dom";
 
 const ChangePasswordPage = () => {
   const { register, handleSubmit, reset } = useForm();
   const [userToken, setUserToken] = useCookie("my_token");
   const [profileToken, setProfileToken] = useCookie("my_profile");
-
-  const { setUser } = useProfileStore();
 
   const [isLoading, setIsLoading] = useState(false);
   const nav = useNavigate();

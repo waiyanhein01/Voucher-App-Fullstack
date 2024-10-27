@@ -4,9 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../api/Api";
 import toast, { Toaster } from "react-hot-toast";
 import useCookie from "react-use-cookie";
-import useSWR from "swr";
-import useProfileStore from "../store/useProfileStore";
-import { set } from "lodash";
 
 const LoginPage = () => {
   const [userToken, setUserToken] = useCookie("my_token");
@@ -17,6 +14,7 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   useEffect(() => {
@@ -42,8 +40,10 @@ const LoginPage = () => {
       setUserToken(json.token);
       setProfileToken(JSON.stringify(json.user));
       nav("/dashboard");
+      reset()
     } else {
       toast.error(json.message);
+      reset()
     }
     setIsLogin(false);
   };

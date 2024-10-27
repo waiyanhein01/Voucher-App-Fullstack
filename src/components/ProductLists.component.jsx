@@ -27,7 +27,7 @@ const ProductListsComponent = () => {
   const fetchUrlHandler = (url) => {
     setFetchUrl(url);
   };
-
+console.log(data)
   return (
     <div>
       <SearchCreateBtnComponent
@@ -55,13 +55,13 @@ const ProductListsComponent = () => {
           <thead className="text-xs text-gray-50 uppercase bg-cyan-700 dark:bg-cyan-800 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                #
+                ID
               </th>
               <th scope="col" className="px-6 py-3">
                 Product Name
               </th>
               <th scope="col" className="px-6 py-3 text-end">
-                Price
+                Price(MMK)
               </th>
               <th scope="col" className="px-6 py-3 text-end">
                 Created At

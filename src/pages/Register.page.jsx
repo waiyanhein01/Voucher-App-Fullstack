@@ -12,6 +12,7 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const handleRegister = async (data) => {
@@ -30,9 +31,11 @@ const RegisterPage = () => {
     if (res.status === 200) {
       toast.success("Register successfully");
       setIsSingUp(false);
+      reset()
       nav("/");
     } else {
       toast.error(json.message);
+      reset()
     }
   };
   return (
