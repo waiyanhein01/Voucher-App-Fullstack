@@ -27,7 +27,7 @@ const VoucherInfoComponent = () => {
 
   const generateVoucherID = (length = 10) => {
     const characters = "ABCDE0123456789";
-    let voucherID = "";
+    let voucherID = "INV-";
 
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * characters.length);
@@ -54,13 +54,14 @@ const VoucherInfoComponent = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${userToken}`
+        Accept: "application/json",
+        Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify(currentData),
     });
 
     const resJson = await res.json();
+    // console.log(resJson);
 
     if (res.status === 201) {
       setIsSending(false);
@@ -69,7 +70,7 @@ const VoucherInfoComponent = () => {
       reset();
 
       if (data.voucher_details) {
-        nav("/dashboard/vouchers/details" + resJson.id);
+        nav("/dashboard/vouchers/details/" + resJson.data.id);
       }
     } else {
       toast.error(resJson.message);

@@ -27,7 +27,7 @@ const ProductListsComponent = () => {
   const fetchUrlHandler = (url) => {
     setFetchUrl(url);
   };
-console.log(data)
+// console.log(data)
   return (
     <div>
       <SearchCreateBtnComponent
@@ -50,7 +50,7 @@ console.log(data)
         </span>
         ) */}
       </h1>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative overflow-x-auto shadow-md rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-50 uppercase bg-cyan-700 dark:bg-cyan-800 dark:text-gray-400">
             <tr>

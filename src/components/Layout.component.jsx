@@ -4,6 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import useCookie from "react-use-cookie";
 import useProfileStore from "../store/useProfileStore";
+import FooterComponent from "./Footer.component";
 
 const LayoutComponent = () => {
   const [userToken, setUserToken] = useCookie("my_token");
@@ -24,6 +25,7 @@ const LayoutComponent = () => {
     <main className=" flex flex-col min-h-screen p-5">
       <HeaderComponent />
       <Outlet />
+      <FooterComponent />
       <Toaster position="top-right" />
     </main>
   );

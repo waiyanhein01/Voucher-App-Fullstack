@@ -52,7 +52,7 @@ const VoucherDetailsCardComponent = () => {
       <div
         id="printThis"
         ref={contentRef}
-        className=" w-[14.8cm] mx-auto bg-white p-3 shadow mb-5"
+        className=" mdw-[14.8cm] w-auto mx-auto bg-white p-3 shadow mb-5"
       >
         {isLoading ? (
           <VoucherSkeletonLoaderComponent />
@@ -60,13 +60,13 @@ const VoucherDetailsCardComponent = () => {
           <div>
             <div className="flex justify-between items-start mb-8">
               <div>
-                <h1 className="text-4xl font-bold mb-2">INVOICE</h1>
-                <p className="text-md">#{data.data.voucher_id}</p>
+                <h1 className="md:text-4xl text-2xl font-bold mb-2">INVOICE</h1>
+                <p className="text-sm md:text-base">#{data.data.voucher_id}</p>
               </div>
               <div className="text-right">
-                <p className="font-bold">Invoice to</p>
-                <p>{data.data.customer_name}</p>
-                <p>Date: {data.data.sale_date.slice(0, 10)}</p>
+                <p className="font-bold text-sm md:text-base">Invoice to</p>
+                <p className="text-sm md:text-base" >{data.data.customer_name}</p>
+                <p className="text-sm md:text-base" >Date: {data.data.sale_date.slice(0, 10)}</p>
               </div>
             </div>
 

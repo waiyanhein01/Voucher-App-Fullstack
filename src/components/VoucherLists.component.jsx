@@ -10,6 +10,7 @@ import { debounce } from "lodash";
 import PaginationComponents from "./Pagination.components";
 import useCookie from "react-use-cookie";
 import { useLocation, useSearchParams } from "react-router-dom";
+import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 const VoucherListsComponent = () => {
   const [userToken, setUserToken] = useCookie("my_token");
@@ -26,7 +27,7 @@ const VoucherListsComponent = () => {
   const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
 
   const fetchUrlHandler = (url) => {
-    console.log(url);
+    // console.log(url);
     const currentUrl = new URL(url); // 2.for get fetch api url
     const newSearchParam = new URLSearchParams(currentUrl.search);
     const paramObject = Object.fromEntries(newSearchParam.entries());
@@ -43,6 +44,26 @@ const VoucherListsComponent = () => {
       setFetchUrl(api + "/vouchers");
     }
   }, 500);
+
+  const sortTotalAscHandler = async () => {
+    setParam({});
+    setFetchUrl(api + "/vouchers?sort_by=total&sort_direction=asc");
+  };
+
+  const sortTotalDescHandler = async () => {
+    setParam({});
+    setFetchUrl(api + "/vouchers?sort_by=total&sort_direction=desc");
+  };
+
+  const sortIdAscHandler = async () => {
+    setParam({});
+    setFetchUrl(api + "/vouchers?sort_by=id&sort_direction=asc");
+  };
+
+  const sortIdDescHandler = async () => {
+    setParam({});
+    setFetchUrl(api + "/vouchers?sort_by=id&sort_direction=desc");
+  };
 
   // console.log(data)
   return (
@@ -66,12 +87,22 @@ const VoucherListsComponent = () => {
         </span>
         ) */}
       </h1>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative overflow-x-auto shadow-md rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-50 uppercase bg-cyan-700 dark:bg-cyan-800 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                id
+                <span className=" flex items-center justify-between">
+                  <span className="">ID</span>
+                  <span className=" flex flex-col">
+                    <button onClick={sortIdAscHandler} className="">
+                      <HiChevronUp className=" size-4" />
+                    </button>
+                    <button onClick={sortIdDescHandler} className="">
+                      <HiChevronDown className=" size-4" />
+                    </button>
+                  </span>
+                </span>
               </th>
               <th scope="col" className="px-6 py-3 text-nowrap">
                 Customer Name
@@ -86,7 +117,17 @@ const VoucherListsComponent = () => {
                 Sale date
               </th>
               <th scope="col" className="px-6 py-3 text-right">
-                Total(MMK)
+              <span className=" flex items-center justify-between">
+                  <span className="">Total(MMK)</span>
+                  <span className=" flex flex-col">
+                    <button onClick={sortTotalAscHandler} className="">
+                      <HiChevronUp className=" size-4" />
+                    </button>
+                    <button onClick={sortTotalDescHandler} className="">
+                      <HiChevronDown className=" size-4" />
+                    </button>
+                  </span>
+                </span>
               </th>
               <th scope="col" className="px-6 py-3 text-right">
                 Action

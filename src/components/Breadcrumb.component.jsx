@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const BreadcrumbComponent = ({ currentPage, links }) => {
   return (
     <div className=" mb-5">
-      <nav className="flex" aria-label="Breadcrumb">
+      <nav className="flex overflow-y-scroll no-scrollbar" aria-label="Breadcrumb">
         <ol className="inline-flex items-center rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <Link
@@ -22,7 +22,7 @@ const BreadcrumbComponent = ({ currentPage, links }) => {
             <HiMiniChevronRight className=" size-6 text-stone-500" />
             <Link
               to={link.path}
-              className=" inline-flex items-center text-sm font-medium text-stone-500 dark:text-stone-400 dark:hover:text-white"
+              className=" inline-flex text-nowrap items-center text-sm font-medium text-stone-500 dark:text-stone-400 dark:hover:text-white"
             >
               {link.title}
             </Link>
@@ -32,7 +32,7 @@ const BreadcrumbComponent = ({ currentPage, links }) => {
           <li>
             <div className="flex items-center">
               <HiMiniChevronRight className=" size-6" />
-              <h1 className=" text-sm font-medium text-stone-700 dark:text-gray-400 dark:hover:text-white">
+              <h1 className=" text-sm text-nowrap font-medium text-stone-700 dark:text-gray-400 dark:hover:text-white">
                 {currentPage}
               </h1>
             </div>

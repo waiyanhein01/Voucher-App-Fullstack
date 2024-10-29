@@ -50,7 +50,7 @@ const AboutComponent = () => {
           <li className=" mb-2">
             <strong>Product Features:</strong> <br />
             Create new products quickly and efficiently, with all the details
-            needed for sales and promotion.
+            needed for sales.
           </li>
           <li className=" mb-2">
             <strong>Sale Features:</strong> <br />
@@ -69,13 +69,15 @@ const AboutComponent = () => {
         <h1 className=" text-2xl font-bold mb-2">Build By</h1>
 
         <ul className=" ps-5">
-          <li className=" list-disc">React for the user interface</li>
-          <li className=" list-disc">Axios for handling HTTP requests</li>
+          
+          <li className=" list-disc">React & React Router DOM for core framework and routing.</li>
+          <li className=" list-disc">SWR for Data fetching with caching and revalidation.</li>
           <li className=" list-disc">
-            SWR for efficient data fetching and caching
+          Laravel for backend API and database management.
           </li>
-          <li className=" list-disc">React Router DOM for routing</li>
-          <li className=" list-disc">Zustand for state management</li>
+          <li className=" list-disc">Tailwind CSS & Flowbite for styling and UI components.</li>
+          <li className=" list-disc">Zustand for global state management.</li>
+          <li className=" list-disc">React Hook Form for form handling and validation.</li>
         </ul>
       </div>
 
