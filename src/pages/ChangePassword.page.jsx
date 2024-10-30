@@ -38,7 +38,7 @@ const ChangePasswordPage = () => {
       reset();
     } else {
       toast.error(json.message);
-      setIsLoading(false);
+      reset()
     }
     // console.log(data)
   };
@@ -48,14 +48,14 @@ const ChangePasswordPage = () => {
       <Toaster position="top-right" />
       <form
         onSubmit={handleSubmit(changeUserNameBtnHandler)}
-        className=" border w-[400px] p-5 rounded-lg"
+        className=" border md:w-[400px] w-auto p-5 rounded-lg"
       >
         <div className="mb-3">
           <label
             htmlFor="old_password"
             className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Old Password
+            Current Password
           </label>
           <input
             {...register("old_password")}
@@ -104,9 +104,9 @@ const ChangePasswordPage = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="text-white disabled:pointer-events-none disabled:opacity-50 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-cyan-600 dark:hover:bg-cyan-700 focus:outline-none dark:focus:ring-cyan-800"
+            className="text-white disabled:pointer-events-none w-full disabled:opacity-50 bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-3 dark:bg-cyan-600 dark:hover:bg-cyan-700 focus:outline-none dark:focus:ring-cyan-800"
           >
-            {isLoading ? "Loading..." : "Change"}
+            {isLoading ? "Loading..." : "Change Password"}
           </button>
         </div>
       </form>

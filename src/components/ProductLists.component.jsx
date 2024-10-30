@@ -23,6 +23,7 @@ const ProductListsComponent = () => {
   const searchHandler = debounce((e) => {
     setFetchUrl(api + "/products?q=" + e.target.value);
   }, 500);
+  console.log(data)
 
   const fetchUrlHandler = (url) => {
     setFetchUrl(url);
@@ -57,19 +58,19 @@ const ProductListsComponent = () => {
               <th scope="col" className="px-6 py-3">
                 ID
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-nowrap">
                 Product Name
               </th>
-              <th scope="col" className="px-6 py-3 text-end">
+              <th scope="col" className="px-6 py-3 text-nowrap text-end">
                 Price(MMK)
               </th>
-              <th scope="col" className="px-6 py-3 text-end">
+              <th scope="col" className="px-6 py-3 text-nowrap text-end">
                 Created At
               </th>
-              <th scope="col" className="px-6 py-3 text-end">
+              <th scope="col" className="px-6 py-3 text-nowrap text-end">
                 Updated At
               </th>
-              <th scope="col" className="px-6 py-3 text-end">
+              <th scope="col" className="px-6 py-3 text-nowrap text-end">
                 Action
               </th>
             </tr>

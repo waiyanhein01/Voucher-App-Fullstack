@@ -22,7 +22,6 @@ const HeaderComponent = () => {
           <h2 className=" text-stone-500">MMS Solution</h2>
         </div>
         <ProfileComponent />
-        
       </div>
     </ContainerComponent>
   );

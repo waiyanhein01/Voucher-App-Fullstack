@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { HiCamera, HiOutlineAdjustmentsVertical, HiOutlineKey } from "react-icons/hi2";
+import {
+
+  HiOutlineIdentification,
+  HiOutlineKey,
+} from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import LogoutBtnComponent from "./LogoutBtn.component";
 import useProfileStore from "../store/useProfileStore";
 import ChangeImageComponent from "./ChangeImage.component";
+import { HiChevronDown } from "react-icons/hi";
 
 const ProfileComponent = () => {
   // const [profileToken, setProfileToken] = useCookie("my_profile");
   // const { name, profile_image,email } = JSON.parse(profileToken);
-  const {user:{profile_image}} = useProfileStore()
+  const {
+    user: { profile_image },
+  } = useProfileStore();
 
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
@@ -31,16 +38,20 @@ const ProfileComponent = () => {
         aria-controls="nav-menu-4"
         onClick={drawerHandler}
       >
-        <div className=" flex flex-col items-center">
-          <div className=" border rounded-full overflow-hidden">
+        <div className=" relative flex flex-col items-center">
+          <div className="  border rounded-full overflow-hidden">
             <img
-              className="w-10 h-10 object-cover object-top"
+              className="w-12 h-12 object-cover object-top"
               src={
                 profile_image
                   ? profile_image
                   : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdO2DCDcfM7yDAtEo797CkSw_njibgz-lOgw&s"
               }
             />
+
+            <div className=" absolute right-1 bottom-0">
+              <HiChevronDown className="w-[15px] h-[15px] text-slate-50 bg-slate-700 rounded-full border border-black" />
+            </div>
           </div>
         </div>
       </button>
@@ -53,7 +64,7 @@ const ProfileComponent = () => {
           isSideNavOpen ? "translate-x-0" : " translate-x-full"
         }`}
       >
-        <ChangeImageComponent/>
+        <ChangeImageComponent />
         <nav
           aria-label="side navigation"
           className="flex-1 divide-y divide-slate-100 overflow-auto"
@@ -62,17 +73,21 @@ const ProfileComponent = () => {
             <ul className="flex flex-1 flex-col gap-1 py-3">
               <li className="px-3">
                 <Link
-                to={"/dashboard/change-username"}
+                  onClick={drawerHandler}
+                  to={"/dashboard/change-username"}
                   className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
                 >
-                  <HiOutlineAdjustmentsVertical className="h-5 w-5" />
+                  <HiOutlineIdentification className="h-5 w-5" />
+                  {/* <HiOutlineAdjustmentsVertical /> */}
                   <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
                     Change Username
                   </div>
                 </Link>
               </li>
               <li className="px-3">
-                <Link to={"/dashboard/change-password"}
+                <Link
+                  onClick={drawerHandler}
+                  to={"/dashboard/change-password"}
                   className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-cyan-50 hover:text-cyan-500 focus:bg-cyan-50 aria-[current=page]:bg-cyan-50 aria-[current=page]:text-cyan-500 "
                 >
                   <HiOutlineKey className="h-5 w-5" />

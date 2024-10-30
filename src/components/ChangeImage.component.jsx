@@ -44,6 +44,7 @@ const ChangeImageComponent = () => {
       setUser(json.user);
     } else {
       toast.error(json.message);
+      setUploading(false);
     }
   };
 
@@ -53,10 +54,10 @@ const ChangeImageComponent = () => {
 
   return (
     <div className="flex flex-col items-center gap-4 border-b border-slate-200 p-6">
-      <div className="shrink-0">
-        <div className=" relative border flex h-20 w-20 items-center justify-center rounded-full">
+      <div className="shrink-0 relative">
+        <div className="  border flex overflow-hidden h-20 w-20 items-center justify-center rounded-full">
           <img
-            className="object-cover object-top max-w-full rounded-full border"
+            className="object-cover object-top max-w-full rounded-full"
             width="100"
             height="100"
             src={

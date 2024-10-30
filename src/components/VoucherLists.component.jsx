@@ -11,6 +11,7 @@ import PaginationComponents from "./Pagination.components";
 import useCookie from "react-use-cookie";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
+import SortDropdownComponent from "./SortDropdown.component";
 
 const VoucherListsComponent = () => {
   const [userToken, setUserToken] = useCookie("my_token");
@@ -24,7 +25,8 @@ const VoucherListsComponent = () => {
       },
     }).then((r) => r.json());
   const [fetchUrl, setFetchUrl] = useState(api + "/vouchers" + location.search);
-  const { data, isLoading, error } = useSWR(fetchUrl, fetcher);
+  const { data, isLoading } = useSWR(fetchUrl, fetcher);
+  console.log(data)
 
   const fetchUrlHandler = (url) => {
     // console.log(url);
@@ -45,24 +47,25 @@ const VoucherListsComponent = () => {
     }
   }, 500);
 
-  const sortTotalAscHandler = async () => {
+  const sortCustomerNameHandler = async () => {
+    setParam({});
+    setFetchUrl(api + "/vouchers?sort_by=customer_name&sort_direction=asc");
+  };
+
+  // const sortTotalDescHandler = async () => {
+  //   setParam({});
+  //   setFetchUrl(api + "/vouchers?sort_by=total&sort_direction=desc");
+  // };
+
+  const sortMinimumTotalHandler = async () => {
     setParam({});
     setFetchUrl(api + "/vouchers?sort_by=total&sort_direction=asc");
   };
 
-  const sortTotalDescHandler = async () => {
+  const sortDefaultHandler = async () => {
     setParam({});
     setFetchUrl(api + "/vouchers?sort_by=total&sort_direction=desc");
-  };
-
-  const sortIdAscHandler = async () => {
-    setParam({});
-    setFetchUrl(api + "/vouchers?sort_by=id&sort_direction=asc");
-  };
-
-  const sortIdDescHandler = async () => {
-    setParam({});
-    setFetchUrl(api + "/vouchers?sort_by=id&sort_direction=desc");
+    setFetchUrl(api + "/vouchers?sort_by=customer_name&sort_direction=desc");
   };
 
   // console.log(data)
@@ -75,18 +78,12 @@ const VoucherListsComponent = () => {
         placeholder={"Search voucher"}
         icon={<HiMiniComputerDesktop className=" size-5" />}
       />
-      <h1 className=" text-xl mb-2 font-semibold">
-        Voucher List Table
-        {/* ( 
-        <span className=" text-cyan-700">
-          {isLoading ? (
-            <div className="h-4 bg-gray-200 inline-flex rounded-full dark:bg-gray-700 w-5 animate-pulse"></div>
-          ) : (
-            data.data.length
-          )}
-        </span>
-        ) */}
-      </h1>
+      <div className=" flex justify-between items-center mb-2">
+        <h1 className=" text-xl font-semibold">Voucher List Table</h1>
+        <div className="">
+          <SortDropdownComponent sortMinimumTotalHandler={sortMinimumTotalHandler} sortCustomerNameHandler={sortCustomerNameHandler} sortDefaultHandler={sortDefaultHandler}/>
+        </div>
+      </div>
       <div className="relative overflow-x-auto shadow-md rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-50 uppercase bg-cyan-700 dark:bg-cyan-800 dark:text-gray-400">
@@ -94,14 +91,14 @@ const VoucherListsComponent = () => {
               <th scope="col" className="px-6 py-3">
                 <span className=" flex items-center justify-between">
                   <span className="">ID</span>
-                  <span className=" flex flex-col">
+                  {/* <span className=" flex flex-col">
                     <button onClick={sortIdAscHandler} className="">
                       <HiChevronUp className=" size-4" />
                     </button>
                     <button onClick={sortIdDescHandler} className="">
                       <HiChevronDown className=" size-4" />
                     </button>
-                  </span>
+                  </span> */}
                 </span>
               </th>
               <th scope="col" className="px-6 py-3 text-nowrap">
@@ -119,14 +116,14 @@ const VoucherListsComponent = () => {
               <th scope="col" className="px-6 py-3 text-right">
               <span className=" flex items-center justify-between">
                   <span className="">Total(MMK)</span>
-                  <span className=" flex flex-col">
+                  {/* <span className=" flex flex-col">
                     <button onClick={sortTotalAscHandler} className="">
                       <HiChevronUp className=" size-4" />
                     </button>
                     <button onClick={sortTotalDescHandler} className="">
                       <HiChevronDown className=" size-4" />
                     </button>
-                  </span>
+                  </span> */}
                 </span>
               </th>
               <th scope="col" className="px-6 py-3 text-right">

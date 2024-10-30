@@ -6,16 +6,17 @@ const FooterComponent = () => {
   return (
     <ContainerComponent className={"mt-auto"}>
       <footer className="bg-white sm:flex sm:items-center mt-5 sm:justify-between border-t-2 dark:bg-gray-800 antialiased">
-        <p className="mb-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
+        <p className="mb-2 text-sm text-center text-gray-500 dark:text-gray-400 sm:mb-0">
           © {date.getFullYear()}
           <span className="hover:underline ps-2">Code by Yan</span>. All rights
           reserved.
         </p>
         <div className="flex justify-center items-center space-x-1">
           <a
-            href="#"
+            href="https://www.facebook.com/profile.php?id=100080279465831"
             data-tooltip-target="tooltip-facebook"
             className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+            target="_blank"
           >
             <svg
               className="w-4 h-4"
@@ -37,10 +38,10 @@ const FooterComponent = () => {
             role="tooltip"
             className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
-            Like us on Facebook
+            Like on Facebook
             <div className="tooltip-arrow" data-popper-arrow />
           </div>
-          {/* <a
+          <a
           href="#"
           data-tooltip-target="tooltip-twitter"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
@@ -58,19 +59,20 @@ const FooterComponent = () => {
             />
           </svg>
           <span className="sr-only">Twitter</span>
-        </a> */}
+        </a>
           <div
             id="tooltip-twitter"
             role="tooltip"
             className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
-            Follow us on Twitter
+            Follow on Twitter
             <div className="tooltip-arrow" data-popper-arrow />
           </div>
           <a
-            href="#"
+            href="https://github.com/waiyanhein01"
             data-tooltip-target="tooltip-github"
             className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
+            target="_blank"
           >
             <svg
               className="w-4 h-4"
@@ -92,10 +94,10 @@ const FooterComponent = () => {
             role="tooltip"
             className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
-            Star us on GitHub
+            Star on GitHub
             <div className="tooltip-arrow" data-popper-arrow />
           </div>
-          {/* <a
+          <a
           href="#"
           data-tooltip-target="tooltip-dribbble"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer dark:text-gray-400 dark:hover:text-white hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600"
@@ -114,15 +116,15 @@ const FooterComponent = () => {
             />
           </svg>
           <span className="sr-only">Dribbble</span>
-        </a> */}
-          {/* <div
+        </a>
+          <div
           id="tooltip-dribbble"
           role="tooltip"
           className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
         >
-          Follow us on Dribbble
+          Follow on Dribbble
           <div className="tooltip-arrow" data-popper-arrow />
-        </div> */}
+        </div>
         </div>
       </footer>
     </ContainerComponent>

@@ -22,6 +22,9 @@ const VoucherListRowComponent = ({
   },
   index,
 }) => {
+  // console.log(created_at)
+  // console.log(sale_date)
+
   const [isDeleting, setIsDeleting] = useState(false);
   const { mutate } = useSWRConfig();
   const [userToken, setUserToken] = useCookie("my_token");
